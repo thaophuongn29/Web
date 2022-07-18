@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính điểm trung bình</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: linear-gradient(to right,lavenderblush, honeydew);
+            background-repeat: none;
+        }
+        label {
+            display: block;
+        }
+        table {
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+        }
+        th {
+            background-color: PowderBlue;
+        }
+        button {
+            border-radius: 20px;
+            background-color: pink;
+        }
+        span {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .edit-color {
+            border: 3px red solid;
+        }
+        .cssColor {
+            background-color: LightCoral;
+        }
+        @media (min-width: 992px) {
+            input {
+                float: right;
+                width: 70%;
+
+            }
+        }
+        @media (max-width: 992px) {
+            form {
+                text-align: center;
+            }
+            input {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 70%;
+            }
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var count = 1
+
+            // Nút nhập
+            $("#add-btn").click(function () {
+                if ($("#fname").val() && $("#math").val() && $("#physical").val() && $("#chemistry").val()) {
+                    //  Lấy giá trị từ ô input
+                    var inputName = $("#fname").val();
+                    var inputMath = $("#math").val();
+                    var inputPhysical = $("#physical").val();
+                    var inputChemistry = $("#chemistry").val();
+
+                    // Thêm dữ liệu vào bảng
+                    $("table").append(`<tr>
+                    <td>${count}</td>
+                    <td>${inputName}</td>
+                    <td>${inputMath}</td>
+                    <td>${inputPhysical}</td>
+                    <td>${inputChemistry}</td>
+                    <td>?</td>
+                    <td>
+                        <span class="edit" id= "edit-${count}"> Sửa</span> 
+                        <span class="delete" id= "delete-${count}">Xoá</span>
+                    </td>
+                    </tr>`);
+
+                    // Xoá input
+                    $("#fname").val("");
+                    $("#math").val("");
+                    $("#physical").val("");
+                    $("#chemistry").val("");
+
+                    count += 1;
+
+                } else {
+                    alert("Bạn cần nhập đầy đủ họ tên và điểm số");
+                }
+            })
+
+            // Nút sửa điểm
+            $("table").on("click", "span.edit", function (value) {
+                $("tr").each(function () {
+                    //  Lấy id của thẻ span sửa
+                    var getId = $($($(this).children("td")[6]).children("span")[0]).attr("id");
+                    if (value.currentTarget.id == getId) {
+                        // Lấy giá trị từng ô trong bảng
+                        var inputName = $($(this).children("td")[1]).html();
+                        var inputMath = $($(this).children("td")[2]).html();
+                        var inputPhysical = $($(this).children("td")[3]).html();
+                        var inputChemistry = $($(this).children("td")[4]).html();
+
+                        // Nạp giá trị của bảng vào input
+                        $("#fname").val(inputName);
+                        $("#math").val(inputMath);
+                        $("#physical").val(inputPhysical);
+                        $("#chemistry").val(inputChemistry);
+
+                        // Hiện nút cập nhật điểm
+                        $("#update-btn").show();
+                        $("#add-btn").hide();
+
+                        // Thêm css cho ô đang sửa
+                        $(this).addClass("edit-color");
+                        $("form").addClass("edit-color");
+                    }
+                })
+            })
+
+            // Nút cập nhật điểm
+            $("#update-btn").click(function () {
+                $("tr").each(function (index, value) {
+                    if ($(this).hasClass("edit-color")) {
+
+                        // Thay giá trị cũ bằng giá trị mới
+                        $($("tr")[index].children[1]).html($("#fname").val());
+                        $($("tr")[index].children[2]).html($("#math").val());
+                        $($("tr")[index].children[3]).html($("#physical").val());
+                        $($("tr")[index].children[4]).html($("#chemistry").val());
+
+                        // Xoá dữ liệu input
+                        $("#fname").val("");
+                        $("#math").val("");
+                        $("#physical").val("");
+                        $("#chemistry").val("");
+
+                        // Hiện nút nhập
+                        $("#update-btn").hide();
+                        $("#add-btn").show();
+
+                        // Xoá css đang nhập
+                        $(this).removeClass("edit-color");
+                        $("form").removeClass("edit-color")
+                    }
+                })
+            })
+
+            // Nút xoá dữ liệu
+            $("table").on("click", "span.delete", function (value) {
+                $("tr").each(function () {
+
+                    // Lấy id của thẻ span xoá
+                    var getId = $($($(this).children("td")[6]).children("span")[1]).attr("id");
+                    if (value.currentTarget.id == getId) {
+                        $(this).remove();
+                    }
+                })
+            })
+            
+            // Nút tính điểm trung bình
+            $("#avg-btn").click(function() {
+                $("tr").each(function (index, value) {
+                    if($(value.children[5]).html() != "Trung bình") {
+
+                        // Chuyển sang type number
+                        var math = parseFloat($(value.children[2]).html());
+                        var physical = parseFloat($(value.children[3]).html());
+                        var chemistry = parseFloat($(value.children[4]).html());
+
+                        // Tính điểm trung bình
+                        var result = ((math + physical + chemistry)/ 3).toFixed(1);
+                        $(value.children[5]).html(result);
+                    }
+                })
+            })
+
+            // Nút xác định học sinh giỏi
+            $("#check-btn").click(function() {
+                $("tr").each(function (index, value) {
+                    var check = $(value.children[5]).html();
+                    if(check >= 8) {
+                        $(this).addClass("cssColor");
+                    }else {
+                        $(this).removeClass("cssColor");
+                    }
+                })
+            })
+
+        })
+        
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="pt-5 pb-4 text-center">Class Marksheet</h1>
+        <!-- Form nhap -->
+        <form action="" class="row">
+            <div class="col-md-4 offset-md-4">
+                <label class="mb-3" for="fname">
+                    Họ tên
+                    <input id="fname" type="text">
+                </label>
+                <label class="mb-3" for="math">
+                    Điểm toán
+                    <input id="math" type="number">
+                </label>
+                <label class="mb-3" for="physical">
+                    Điểm lí
+                    <input id="physical" type="number">
+                </label>
+                <label class="mb-3" for="chemistry">
+                    Điểm hoá
+                    <input id="chemistry" type="number">
+                </label>
+                <div class="text-center mt-5">
+                    <button id="add-btn" type="button">Nhập</button>
+                    <button id="update-btn" type="button" style="display: none;">Cập nhật</button>
+                </div>
+
+            </div>
+        </form>
+
+        <!-- Table -->
+        <table class="mt-5 mb-5 text-center" style="width: 100%;">
+            <tr>
+                <th style="width: 10%;">STT</th>
+                <th style="width: 25%;">Họ tên</th>
+                <th style="width: 13%;">Toán</th>
+                <th style="width: 13%;">Lí</th>
+                <th style="width: 13%;">Hoá</th>
+                <th style="width: 13%;">Trung bình</th>
+                <th style="width: 13%;">Chỉnh sửa</th>
+
+            </tr>
+        </table>
+
+        <!-- Button -->
+        <div class="text-center mb-3">
+            <button id="avg-btn">Tính điểm trung bình</button>
+            <button id="check-btn">Xác định học sinh giỏi</button>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
