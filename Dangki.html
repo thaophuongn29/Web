@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <title>Du Lịch Hà Nội cùng HaNoi-Travel</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Du lịch Hà Nội, Hà Nội, địa điểm vui chơi, giải trí, cảnh đẹp Hà Nội">
+    <meta name="description" content="Đăng kí HaNoi-Travel để cùng thưởng thức Hà Nội" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/Proj4.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/221a72821b.js" crossorigin="anonymous"></script>
+</head>
+<body >
+    <!-- Navbar -->
+    <div class="bg-light">
+        <ul class="nav nav-pills nav-fill">
+            <li class="nav-item">
+                <a class="nav-link navbar- text-dark" href="./index.html">Trang chủ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link navbar- text-dark" href="./DulichHaNoi.html">Khu du lịch</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link navbar-link text-dark" href="./MonanHaNoi.html">Món ăn</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle navbar-link text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Trợ giúp</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="./Dangnhap.html">Đăng nhập</a></li>
+                  <li><a class="dropdown-item" href="#">Đăng kí</a></li>
+                  <li><a class="dropdown-item" href="#footer">Thông tin liên hệ</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="./index.html">Đăng xuất</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="" style="background-image: url(./assets/img/Ha-noi.jpeg); height: 790px;">
+        <div class="container">
+            <h1 class="pt-5 pb-5">Đăng kí</h1>
+        </div>
+        <div class="container pb-5">
+            <form class="row g-3 needs-validation" action="./index.html">
+                <div class="col-md-4">
+                  <label for="validationCustom01" class="form-label">Họ</label>
+                  <input type="text" class="form-control" id="validationCustom01" placeholder="Nguyễn" required>
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label for="validationCustom02" class="form-label">Tên</label>
+                  <input type="text" class="form-control" id="validationCustom02" placeholder="Văn A" required>
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label for="validationCustomUsername" class="form-label">Email</label>
+                  <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                    <div class="invalid-feedback">
+                      Please choose a username.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="validationCustom03" class="form-label">Tên đăng nhập</label>
+                  <input type="text" class="form-control" id="validationCustom03" required>
+                  <div class="invalid-feedback">
+                    Please provide a valid city.
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <label for="validationCustom04" class="form-label">Giới tính</label>
+                  <select class="form-select" id="validationCustom04" required>
+                    <option selected disabled value="">Chọn</option>
+                    <option>Nam</option>
+                    <option>Nữ</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Please select a valid state.
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <label for="validationCustom05" class="form-label">Mật khẩu</label>
+                  <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                  <div class="invalid-feedback">
+                    Please provide a valid zip.
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-check-label" for="invalidCheck">
+                      Đồng ý với các điều kiện trên
+                    </label>
+                    <div class="invalid-feedback">
+                      You must agree before submitting.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-primary" type="submit">Đăng kí</button>
+                </div>
+              </form>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <div id="footer" class="text-center text-white" style="background-color: #f1f1f1;">
+        <div class="container">
+            <section class="">
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="./index.html" role="button" data-mdb-ripple-color="dark">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="./index.html" role="button" data-mdb-ripple-color="dark">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="./index.html" role="button" data-mdb-ripple-color="dark">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="./index.html" role="button" data-mdb-ripple-color="dark">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="./index.html" role="button" data-mdb-ripple-color="dark">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+               
+            </section>
+        </div>
+        <!-- Copyright -->
+        <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2020 Copyright:
+            <a class="text-dark" href="./index.html">Hanoi-travel.com</a>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
