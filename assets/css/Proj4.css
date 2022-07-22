@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+}
+
+@media only screen and (min-width: 992px) {
+    .main-video {
+        height: 70vh;
+    }
+    
+}
+@media only screen and (min-width: 769px) and (max-width: 991px) {
+    .main-video {
+        height: 70vh;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .main-video {
+        height: 50vh;
+    }
+}
+h1, h2, h3, h4, p {
+    text-align: justify;
+    font-family: 'Roboto', sans-serif;
+}
+h2 {
+    font-weight: bold;
+}
+h4 {
+    color: red;
+}
+a {
+    font-family: 'Roboto', sans-serif;
+}
+.navbar-link {
+    padding-left: 0;
+    padding-right: 0;
+}
+.main-img-container {
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+.main-img {
+    max-width: 100%;
+    height: auto;
+}
